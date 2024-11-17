@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}
+    
+       {% endblock title %}  
+  </title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Add margin on both sides */
+    .navbar-nav {
+      margin-right: auto; /* Push the navbar links to the right */
+      margin-left: auto; 
+    }
+
+    /* Add smooth underline effect on hover */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link:hover:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0; /* Start with no width */
+      height: 2px;
+      transition:2s;
+      background-color:red;
+      /* Red line takes 2 seconds to complete smoothly */
+    }
+    .nav-link:hover:after {
+      width: 100%; /* Expand to full width on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/addproduct/">In̷̷c̷̷o̷̷g̷̷n̷̷i̷̷t̷̷o̷ ̷hC̷̷o̷̷n̷̷n̷̷e̷̷c̷̷t̷</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/send/">Livechat</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">your group</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about/">genral 2 group</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact/">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bg-danger" href="/addproduct/">create post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/yourworld/">Your world</a>
+        </li>
+
+
+        {% if  request.user.is_authenticated  %}
+        <li class="nav-item">
+          <a class="nav-link" href="/logout/">Logout <span style="color:green"><b>from</b> </span>{{ user.username }} </a>
+        </li>
+        {% else %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Login
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownLogin">
+            <a class="dropdown-item" href="/login/">Login</a>
+            <a class="dropdown-item" href="/signup/">Sign Up</a>
+          </div>
+        </li>
+
+        {% endif %}
+       
+     
+      </ul>
+    </div>
+  </nav>
+  {%block content%}
+    
+ 
+
+  {%endblock content%}
+
+  <!-- Bootstrap JS dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

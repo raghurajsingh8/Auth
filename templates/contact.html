@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+  <h2 class="text-center">
+Contact Us  </h2>
+  <div class="container mt-2">
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+
+        <form action="/contact/" method="post">
+          {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+          <strong>{{message}}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               
+        {% endfor %}
+          
+           {% csrf_token %}
+
+           <br><br>
+           {% comment %} <input type="text" class="form-control" value={{user.username}} name="real" disabled> {% endcomment %}
+           <label for="name" >Full Name</label>
+           <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name"    >
+           </div>
+           <label for="email" >Email</label>
+           <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" value={{user.username}}  required >
+           </div>
+           <label for="desc" >How Can i Help You ?</label>
+          <textarea  type="text" class="form-control p-2" id="desc" name="desc" required ></textarea>
+           <label for="pnumber" >Phone number</label>
+           <div class="form-group">
+            <input type="number" class="form-control" id="pnumber" name="pnumber"  required >
+           </div>
+          
+          <br>
+          <button  type="submit" class="btn btn-dark">Submit </button>
+    
+          <br>
+    
+
+          </form>
+      </div>
+      <div class="col-md-3"></div>
+
+
+    </div>
+
+
+
+  </div>
+  <h1 class="text-center">
+   --------MEET OFFLINE WITH US-------
+  </h1>
+  <BR>
+    <HR>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.8738998118392!2d77.49449147529377!3d28.753181675599052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf574d18f2b6f%3A0x4a65c0bc0122eb2f!2sKIET%20Group%20of%20Institutions!5e0!3m2!1sen!2sin!4v1708783016861!5m2!1sen!2sin" width="800" height="400" class="kiet-map" allowfullscreen="" loading="lazy" style="border: 0px;"></iframe></div>
+
+
+
+        </div>
+          <div class="col-md-6"></div>
+        
+
+
+  
+
+{%endblock content%}
